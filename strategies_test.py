@@ -55,12 +55,20 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"rank": "A"}, {"rank": "A"}]
         self.assertFalse(strategies.possessHighCard(our_cards, community_cards))
 
+        our_cards = [{"rank": "Q"}, {"rank": "8"}]
+        community_cards = []
+        self.assertTrue(strategies.possessHighCard(our_cards, community_cards))
+
     def test_possessFlush(self):
 
         our_cards = [{"suit": "hearts"}, {"suit": "spades"}]
         community_cards = [{"suit": "clubs"}, {"suit": "clubs"}]
         self.assertFalse(strategies.possessFlush(our_cards, community_cards))
 
+        our_cards = [{"suit": "spades"}, {"suit": "spades"}]
+        community_cards = []
+        self.assertFalse(strategies.possessFlush(our_cards, community_cards))
+
         our_cards = [{"suit": "hearts"}, {"suit": "hearts"}]
         community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertTrue(strategies.possessFlush(our_cards, community_cards))
@@ -76,6 +84,24 @@ class StrategyTester(unittest.TestCase):
         our_cards = [{"suit": "hearts"}, {"suit": "hearts"}]
         community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertTrue(strategies.possessFlush(our_cards, community_cards))
+
+    def test_possessPoker(self):
+
+        our_cards = [{"rank": "2"}, {"rank": "3"}]
+        community_cards = [{"rank": "4"}, {"rank": "5"}]
+        self.assertFalse(strategies.possessPoker(our_cards, community_cards))
+
+        our_cards = [{"rank": "5"}, {"rank": "5"}]
+        community_cards = [{"rank": "5"}, {"rank": "5"}]
+        self.assertTrue(strategies.possessPoker(our_cards, community_cards))
+
+        our_cards = [{"rank": "Q"}, {"rank": "Q"}]
+        community_cards = [{"rank": "Q"}, {"rank": "Q"}, {"rank": "K"}]
+        self.assertTrue(strategies.possessPoker(our_cards, community_cards))
+
+        our_cards = [{"rank": "Q"}, {"rank": "K"}]
+        community_cards = [{"rank": "Q"}, {"rank": "Q"}, {"rank": "Q"}, {"rank": "Q"}]
+        self.assertFalse(strategies.possessPoker(our_cards, community_cards))
 
 if __name__ == "__main__":
     unittest.main()

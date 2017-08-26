@@ -38,3 +38,27 @@ def possessFlush(our_cards, community_cards):
             return True
     else:
         return False
+
+def get_rank_freq(cards):
+    map = {r : 0 for r in ranks}
+    for c in cards:
+        map[c.rank] += 1
+    return map
+
+def get_suit_freq(cards):
+    map = {r : 0 for r in ranks}
+    for c in cards:
+        map[c.suite] += 1
+    return map
+
+def isPoker(cards):
+    cards = [Card(c) for c in cards]
+
+    map = get_rank_freq(cards)
+    return len(list(filter(lambda val : val >= 4, map.values()))) > 0
+
+def possessPoker(our_cards, community_cards):
+    print("===============")
+    print(our_cards)
+    print(community_cards)
+    return isPoker(our_cards + community_cards) and (not isPoker(community_cards))
