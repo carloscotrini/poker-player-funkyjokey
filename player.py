@@ -16,11 +16,14 @@ class Player:
         if strategies.possessPoker(our_cards, community_cards):
             print("PICKED STRATEGY: possessPoker")
             minimum_raise = int(stack) / 4 * 3
-            print(str(minimum_raise))
             return minimum_to_play + minimum_raise
         if strategies.possessFlush(our_cards, community_cards):
             print("PICKED STRATEGY: possessFlush")
             minimum_raise = int(stack) / 2
+            return minimum_to_play + minimum_raise
+        if strategies.possessStraight(our_cards, community_cards):
+            print("PICKED STRATEGY: possessStraight")
+            minimum_raise = int(stack) / 3 * 2
             return minimum_to_play + minimum_raise
         if strategies.possessPair(our_cards, community_cards):
             threshold = int(stack) / 2
