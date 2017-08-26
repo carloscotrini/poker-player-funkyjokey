@@ -14,6 +14,7 @@ class Player:
         bet = players[in_action]['bet']
         stack = players[in_action]['stack']
         minimum_to_play = current_buy_in - bet
+        pot = game_state['pot']
         print(str(our_cards), str(community_cards))
         if strategies.possessStraightFlush(our_cards, community_cards):
             print("PICKED STRATEGY: possessStraightFlush")
@@ -38,6 +39,10 @@ class Player:
             print("PICKED STRATEGY: possessTriple")
             minimum_raise = int(stack) / 4
             return minimum_to_play + minimum_raise
+
+        if pot >= 100:
+            return 0
+
         if strategies.possessHighPair(our_cards, community_cards):
             threshold = int(stack) / 6
             if minimum_to_play >= threshold:
