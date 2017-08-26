@@ -179,5 +179,17 @@ class StrategyTester(unittest.TestCase):
         self.assertFalse(strategies.possessTriple(our_cards, community_cards))
         self.assertTrue(strategies.possessPair(our_cards, community_cards))
 
+    def test_possessHighPair(self):
+        our_cards = [{"rank": "K", "suit":"hearts"}, {"rank": "3" , "suit":"hearts"}]
+        community_cards = [{"rank": "K", "suit":"hearts"}, {"rank": "3", "suit":"hearts"}, {"rank": "3", "suit":"spades"}]
+        self.assertTrue(strategies.possessHighPair(our_cards, community_cards))
+        self.assertTrue(strategies.possessPair(our_cards, community_cards))
+
+        our_cards = [{"rank": "2", "suit": "hearts"}, {"rank": "3", "suit": "hearts"}]
+        community_cards = [{"rank": "2", "suit": "hearts"}, {"rank": "3", "suit": "hearts"},
+                           {"rank": "3", "suit": "spades"}]
+        self.assertFalse(strategies.possessHighPair(our_cards, community_cards))
+        self.assertTrue(strategies.possessPair(our_cards, community_cards))
+
 if __name__ == "__main__":
     unittest.main()

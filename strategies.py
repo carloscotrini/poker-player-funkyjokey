@@ -114,6 +114,16 @@ def isStraightFlush(cards):
 def possessStraightFlush(our_cards, community_cards):
     return isStraightFlush(our_cards + community_cards) and (not isStraightFlush(community_cards))
 
+def hasHighPair(cards):
+    for rank in ["10", "J", "Q", "K", "A"]:
+        rank_cards = list(filter(lambda c: c["rank"] == rank, cards))
+        if len(rank_cards) >= 2:
+            return True
+    return False
+
+def possessHighPair(our_cards, community_cards):
+    return hasHighPair(our_cards + community_cards) and (not hasHighPair(community_cards))
+
 def hasTriple(cards):
     for rank in ranks:
         rank_cards = list(filter(lambda c : c["rank"] == rank, cards))
