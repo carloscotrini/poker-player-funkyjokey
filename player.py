@@ -21,11 +21,10 @@ class Player:
             return stack
         if strategies.possessPoker(our_cards, community_cards):
             print("PICKED STRATEGY: possessPoker")
-            minimum_raise = int(stack) / 4 * 3
-            return minimum_to_play + minimum_raise
+            return stack
         if strategies.possessFlush(our_cards, community_cards):
             print("PICKED STRATEGY: possessFlush")
-            minimum_raise = int(stack) / 2
+            minimum_raise = int(stack) / 4 * 3
             return minimum_to_play + minimum_raise
         if strategies.possessStraight(our_cards, community_cards):
             print("PICKED STRATEGY: possessStraight")
