@@ -21,7 +21,7 @@ class Player:
             print("PICKED STRATEGY: possessPair")
             minimum_raise = int(stack) / 2
             return minimum_to_play + minimum_raise
-        if strategies.possessHighCard(our_cards, community_cards) and community_cards:
+        if strategies.possessHighCard(our_cards, community_cards):
             print("PICKED STRATEGY: possessHighCard")
             return minimum_to_play
         print("NO STRATEGY, WE ARE CHECKING OR FOLDING")
