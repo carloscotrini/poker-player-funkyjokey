@@ -103,5 +103,22 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"rank": "Q"}, {"rank": "Q"}, {"rank": "Q"}, {"rank": "Q"}]
         self.assertFalse(strategies.possessPoker(our_cards, community_cards))
 
+    def test_possessStraight(self):
+        our_cards = [{"rank": "2"}, {"rank": "3"}]
+        community_cards = [{"rank": "4"}, {"rank": "5"}]
+        self.assertFalse(strategies.possessStraight(our_cards, community_cards))
+
+        our_cards = [{"rank": "5"}, {"rank": "7"}]
+        community_cards = [{"rank": "6"}, {"rank": "8"}, {"rank": "4"}]
+        self.assertTrue(strategies.possessStraight(our_cards, community_cards))
+
+        our_cards = [{"rank": "A"}, {"rank": "Q"}]
+        community_cards = [{"rank": "J"}, {"rank": "K"}, {"rank": "10"}, {"rank": "K"}, {"rank": "10"}]
+        self.assertTrue(strategies.possessStraight(our_cards, community_cards))
+
+        our_cards = [{"rank": "2"}, {"rank": "Q"}]
+        community_cards = [{"rank": "J"}, {"rank": "K"}, {"rank": "10"}, {"rank": "K"}, {"rank": "10"}]
+        self.assertFalse(strategies.possessStraight(our_cards, community_cards))
+
 if __name__ == "__main__":
     unittest.main()

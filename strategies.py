@@ -1,5 +1,6 @@
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+val_of_rank = {"2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "10":10, "J":11, "Q":12, "K":13, "A":14}
 suits = ["clubs","spades","hearts","diamonds"]
 
 class Card:
@@ -7,6 +8,9 @@ class Card:
     def __init__(self, card):
         self.rank = card["rank"] if "rank" in card.keys() else "1"
         self.suite = card["suit"] if "suit" in card.keys() else "none"
+
+    def __str__(self):
+        return "[[" + self.rank + " " + self.suite + "]]"
 
 def isPair(our_cards, community_cards):
     rank_counts = {rank:0 for rank in ranks}
@@ -55,10 +59,32 @@ def isPoker(cards):
     cards = [Card(c) for c in cards]
 
     map = get_rank_freq(cards)
-    print(cards)
-    print(map)
     return len(list(filter(lambda val : val >= 4, map.values()))) > 0
 
 def possessPoker(our_cards, community_cards):
-    print("===============")
     return isPoker(our_cards + community_cards) and (not isPoker(community_cards))
+
+def isStraight(cards):
+    cards = [Card(c) for c in cards]
+
+    map = get_rank_freq(cards)
+    ranks_in_cards = []
+    for rank, freq in map.items():
+        if freq > 0:
+            ranks_in_cards.append(rank)
+
+    val_ranks = [False for r in range(20)]
+    for rank in ranks_in_cards:
+        val_ranks[val_of_rank[rank]] = True
+    for i in [2,3,4,5,6,7,8,9,10]:
+        straight_found = True
+        for j in [0,1,2,3,4]:
+            if not val_ranks[i + j]:
+                straight_found = False
+        if straight_found:
+            return True
+
+    return False
+
+def possessStraight(our_cards, community_cards):
+    return isStraight(our_cards + community_cards) and (not isStraight(community_cards))
