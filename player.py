@@ -22,6 +22,11 @@ class Player:
             minimum_raise = int(stack) / 4
             return minimum_to_play + minimum_raise
         if strategies.possessHighCard(our_cards, community_cards):
+            threshold = int(stack) / 4
+            print("ONLY HIGH CARD, THRESHOLD IS {}, BUY IN IS {}".format(threshold, current_buy_in))
+            if minimum_to_play >= threshold:
+                print("PICKED STRATEGY: foldForHighStakes")
+                return 0
             print("PICKED STRATEGY: possessHighCard")
             return minimum_to_play
         print("NO STRATEGY, WE ARE CHECKING OR FOLDING")
