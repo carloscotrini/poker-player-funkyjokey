@@ -30,6 +30,10 @@ class Player:
             print("PICKED STRATEGY: possessStraight")
             minimum_raise = int(stack) / 3 * 2
             return minimum_to_play + minimum_raise
+        if strategies.possessFullHouse(our_cards, community_cards):
+            print("PICKED STRATEGY: possessFullHouse")
+            minimum_raise = int(stack) / 4
+            return minimum_to_play + minimum_raise
         if strategies.possessPair(our_cards, community_cards):
             cap = int(stack) / 3
             threshold = int(stack) / 2

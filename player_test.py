@@ -86,5 +86,11 @@ with open('test_case14.json') as test_case:
     if bet != 333:
         sys.exit('bet is not 333 but {}'.format(bet))
 
+with open('test_case15.json') as test_case:
+    print('15 FULL HOUSE')
+    bet = Player().betRequest(json.loads(test_case.read()))
+    if bet != 256:
+        sys.exit('bet is not 256 but {}'.format(bet))
+
 print('ALL TESTS ARE GOOD!')
 
