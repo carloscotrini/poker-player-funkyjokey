@@ -45,7 +45,11 @@ class Player:
                 print("PICKED STRATEGY: foldForHighStakes PAIR")
                 return 0
             print("PICKED STRATEGY: possessPair")
-            minimum_raise = int(stack) / 8
+            if len(community_cards) > 0:
+                ratio = 10
+            else:
+                ratio = 8
+            minimum_raise = int(stack) / ratio
             to_bet = minimum_to_play + minimum_raise
             #if to_bet > cap:
             #    to_bet = cap
