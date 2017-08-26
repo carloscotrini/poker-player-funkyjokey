@@ -57,24 +57,24 @@ class StrategyTester(unittest.TestCase):
 
     def test_possessFlush(self):
 
-        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
-        community_cards = [{"suite": "clubs"}, {"suite": "clubs"}]
+        our_cards = [{"suit": "hearts"}, {"suit": "spades"}]
+        community_cards = [{"suit": "clubs"}, {"suit": "clubs"}]
         self.assertFalse(strategies.possessFlush(our_cards, community_cards))
 
-        our_cards = [{"suite": "hearts"}, {"suite": "hearts"}]
-        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        our_cards = [{"suit": "hearts"}, {"suit": "hearts"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertTrue(strategies.possessFlush(our_cards, community_cards))
 
-        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
-        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        our_cards = [{"suit": "hearts"}, {"suit": "spades"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertFalse(strategies.possessFlush(our_cards, community_cards))
 
-        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
-        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        our_cards = [{"suit": "hearts"}, {"suit": "spades"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertFalse(strategies.possessFlush(our_cards, community_cards))
 
-        our_cards = [{"suite": "hearts"}, {"suite": "hearts"}]
-        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        our_cards = [{"suit": "hearts"}, {"suit": "hearts"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertTrue(strategies.possessFlush(our_cards, community_cards))
 
 if __name__ == "__main__":

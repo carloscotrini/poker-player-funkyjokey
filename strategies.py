@@ -1,12 +1,12 @@
 
 ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
-suites = ["clubs","spades","hearts","diamonds"]
+suits = ["clubs","spades","hearts","diamonds"]
 
 class Card:
 
     def __init__(self, card):
         self.rank = card["rank"] if "rank" in card.keys() else "1"
-        self.suite = card["suite"] if "suite" in card.keys() else "none"
+        self.suite = card["suit"] if "suit" in card.keys() else "none"
 
 def isPair(our_cards, community_cards):
     rank_counts = {rank:0 for rank in ranks}
@@ -31,7 +31,7 @@ def possessFlush(our_cards, community_cards):
         return False
     elif our_cards[0].suite == our_cards[1].suite:
         comm_suites = [c.suite for c in community_cards]
-        comm_suite_counts = {r : 0 for r in suites}
+        comm_suite_counts = {r : 0 for r in suits}
         for suite in comm_suites:
             comm_suite_counts[suite] += 1
         if comm_suite_counts[our_cards[0].suite] >= 3:
