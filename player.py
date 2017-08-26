@@ -1,5 +1,7 @@
 import strategies
 
+import random
+
 class Player:
     VERSION = "Default Python folding player"
 
@@ -40,6 +42,10 @@ class Player:
                 return 0
             print("PICKED STRATEGY: possessHighCard")
             return minimum_to_play
+        if random.randint(1, 10) <= 3 and stack >= 1000 and len(community_cards) >= 3:
+            print("PICKED_STRATEGY: scareThemOff")
+            minimum_raise = int(stack) / 4
+            return minimum_to_play + minimum_raise
         print("NO STRATEGY, WE ARE CHECKING OR FOLDING")
         return 0
 
