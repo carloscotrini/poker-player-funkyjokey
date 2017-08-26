@@ -104,5 +104,11 @@ with open('test_case17.json') as test_case:
     if bet != 256:
         sys.exit('bet is not 256 but {}'.format(bet))
 
+with open('test_case18.json') as test_case:
+    print('18 HIGH PAIR')
+    bet = Player().betRequest(json.loads(test_case.read()))
+    if bet != 131:
+        sys.exit('bet is not 131 but {}'.format(bet))
+
 print('ALL TESTS ARE GOOD!')
 
