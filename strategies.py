@@ -88,3 +88,14 @@ def isStraight(cards):
 
 def possessStraight(our_cards, community_cards):
     return isStraight(our_cards + community_cards) and (not isStraight(community_cards))
+
+def isStraightFlush(cards):
+    for suit in suits:
+        suit_cards = list(filter(lambda c : c["suit"] == suit, cards))
+        if isStraight(suit_cards):
+            return True
+
+    return False
+
+def possessStraightFlush(our_cards, community_cards):
+    return isStraightFlush(our_cards + community_cards) and (not isStraightFlush(community_cards))

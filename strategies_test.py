@@ -120,5 +120,27 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"rank": "J"}, {"rank": "K"}, {"rank": "10"}, {"rank": "K"}, {"rank": "10"}]
         self.assertFalse(strategies.possessStraight(our_cards, community_cards))
 
+    def test_possessStraightFlush(self):
+        our_cards = [{"rank": "2", "suit":"hearts"}, {"rank": "3" , "suit":"hearts"}]
+        community_cards = [{"rank": "4", "suit":"hearts"}, {"rank": "5", "suit":"hearts"}, {"rank": "6", "suit":"spades"}]
+        self.assertFalse(strategies.possessStraightFlush(our_cards, community_cards))
+
+        our_cards = [{"rank": "2", "suit":"hearts"}, {"rank": "3" , "suit":"hearts"}]
+        community_cards = [{"rank": "4", "suit":"hearts"}, {"rank": "5", "suit":"hearts"}, {"rank": "6", "suit":"hearts"}]
+        self.assertTrue(strategies.possessStraightFlush(our_cards, community_cards))
+
+        our_cards = [{"rank": "5", "suit":"hearts"}, {"rank": "7", "suit":"spades"}]
+        community_cards = [{"rank": "6", "suit":"clubs"}, {"rank": "8", "suit":"diamonds"}, {"rank": "4", "suit":"hearts"}]
+        self.assertFalse(strategies.possessStraightFlush(our_cards, community_cards))
+
+        our_cards = [{"rank": "5", "suit":"clubs"}, {"rank": "7", "suit":"clubs"}]
+        community_cards = [{"rank": "6", "suit":"clubs"}, {"rank": "8", "suit":"clubs"}, {"rank": "4", "suit":"clubs"}]
+        self.assertTrue(strategies.possessStraightFlush(our_cards, community_cards))
+
+        our_cards = [{"rank": "5", "suit":"clubs"}, {"rank": "7", "suit":"spades"}]
+        community_cards = [{"rank": "6", "suit":"clubs"}, {"rank": "8", "suit":"clubs"}, {"rank": "4", "suit":"clubs"}]
+        self.assertFalse(strategies.possessStraightFlush(our_cards, community_cards))
+
+
 if __name__ == "__main__":
     unittest.main()
