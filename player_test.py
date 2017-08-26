@@ -50,11 +50,17 @@ with open('test_case8.json') as test_case:
     if bet != 0:
         sys.exit('bet is not 0 but {}'.format(bet))
 
-with open('test_case8.json') as test_case:
+with open('test_case9.json') as test_case:
     print('9 FOLD FOR HIGH STAKES WITH PAIR')
     bet = Player().betRequest(json.loads(test_case.read()))
     if bet != 0:
         sys.exit('bet is not 0 but {}'.format(bet))
+
+with open('test_case10.json') as test_case:
+    print('10 POKER')
+    bet = Player().betRequest(json.loads(test_case.read()))
+    if bet != 1250:
+        sys.exit('bet is not 1250 but {}'.format(bet))
 
 print('ALL TESTS ARE GOOD!')
 
