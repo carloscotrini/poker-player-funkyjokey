@@ -6,4 +6,7 @@ def isPair(our_cards, community_cards):
     for card in our_cards + community_cards:
         rank_counts[card["rank"]] += 1
 
-    return len(filter(lambda r : r > 1, rank_counts))
+    return len(list(filter(lambda r : rank_counts[r] > 1, rank_counts.keys())))
+
+def possessPair(our_cards, community_cards):
+    pass
