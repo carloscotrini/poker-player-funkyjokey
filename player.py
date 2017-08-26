@@ -61,9 +61,10 @@ class Player:
             return minimum_to_play + minimum_raise
         if strategies.possessHighCard(our_cards, community_cards):
             if len(community_cards) > 0:
-                threshold = 10
+                ratio = 10
             else:
-                threshold = 8
+                ratio = 8
+            threshold = int(stack) / ratio
             if minimum_to_play >= threshold:
                 print("PICKED STRATEGY: foldForHighStakes HIGH CARD")
                 return 0
