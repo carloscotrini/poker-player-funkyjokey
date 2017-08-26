@@ -17,8 +17,8 @@ with open('test_case2.json') as test_case:
 with open('test_case3.json') as test_case:
     print('3 RAISE HALF ON POSSESS PAIR')
     bet = Player().betRequest(json.loads(test_case.read()))
-    if bet != 503:
-        sys.exit('bet is not 503 but {}'.format(bet))
+    if bet != 253:
+        sys.exit('bet is not 253 but {}'.format(bet))
 
 with open('test_case4.json') as test_case:
     print('4 FOLD IF NO PAIR')
@@ -41,8 +41,8 @@ with open('test_case6.json') as test_case:
 with open('test_case7.json') as test_case:
     print('7 RAISE HARD ON FLUSH')
     bet = Player().betRequest(json.loads(test_case.read()))
-    if bet != 753:
-        sys.exit('bet is not 753 but {}'.format(bet))
+    if bet != 503:
+        sys.exit('bet is not 503 but {}'.format(bet))
 
 print('ALL TESTS ARE GOOD!')
 
