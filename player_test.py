@@ -1,6 +1,7 @@
 from player import Player
+import sys
 
-Player().betRequest(
+bet = Player().betRequest(
     {
         "players":[
             {
@@ -8,7 +9,13 @@ Player().betRequest(
                 "stack":1000,
                 "status":"active",
                 "bet":0,
-                "hole_cards":[],
+                "hole_cards":[{
+                    'rank': '2',
+                    'suit': 'hearts'
+                }, {
+                    'rank': '2',
+                    'suit': 'spades'
+                }],
                 "version":"Version name 1",
                 "id":0
             },
@@ -31,9 +38,13 @@ Player().betRequest(
         "dealer":0,
         "in_action":0,
         "community_cards":[],
-        "current_buy_in":0,
+        "current_buy_in":3,
         "pot":0
     }
 )
 
+if bet is not 3:
+    sys.exit('bet is not 3')
+
 print('this did not crash :)')
+
