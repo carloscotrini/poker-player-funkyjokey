@@ -4,6 +4,7 @@ our_cards = [{"rank": "3"}, {"rank":"3"}]
 community_cards = []
 
 print(str(strategies.isPair(our_cards, community_cards)) + " == 1")
+print(str(strategies.possessPair(our_cards, community_cards)) + " == 1")
 
 our_cards = [{"rank": "3"}, {"rank":"5"}]
 
