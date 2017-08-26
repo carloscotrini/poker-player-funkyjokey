@@ -38,24 +38,27 @@ class Player:
             print("PICKED STRATEGY: possessTriple")
             minimum_raise = int(stack) / 4
             return minimum_to_play + minimum_raise
-        if strategies.possessPair(our_cards, community_cards):
-            #cap = int(stack) / 3
+        if strategies.possessHighPair(our_cards, community_cards):
             threshold = int(stack) / 6
             if minimum_to_play >= threshold:
                 print("PICKED STRATEGY: foldForHighStakes PAIR")
                 return 0
-            print("PICKED STRATEGY: possessPair")
-            if len(community_cards) > 0:
-                ratio = 10
-            else:
-                ratio = 8
-            minimum_raise = int(stack) / ratio
-            to_bet = minimum_to_play + minimum_raise
-            #if to_bet > cap:
-            #    to_bet = cap
-            return to_bet
-        if strategies.possessHighCard(our_cards, community_cards):
+            print("PICKED STRATEGY: possessHighPair")
+            minimum_raise = int(stack) / 8
+            return minimum_to_play + minimum_raise
+        if strategies.possessPair(our_cards, community_cards):
             threshold = int(stack) / 8
+            if minimum_to_play >= threshold:
+                print("PICKED STRATEGY: foldForHighStakes PAIR")
+                return 0
+            print("PICKED STRATEGY: possessPair")
+            minimum_raise = int(stack) / 8
+            return minimum_to_play + minimum_raise
+        if strategies.possessHighCard(our_cards, community_cards):
+            if len(community_cards) > 0:
+                threshold = 10
+            else:
+                threshold = 8
             if minimum_to_play >= threshold:
                 print("PICKED STRATEGY: foldForHighStakes HIGH CARD")
                 return 0
