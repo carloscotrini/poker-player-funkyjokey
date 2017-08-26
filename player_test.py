@@ -45,7 +45,13 @@ with open('test_case7.json') as test_case:
         sys.exit('bet is not 503 but {}'.format(bet))
 
 with open('test_case8.json') as test_case:
-    print('8 FOLD FOR HIGH STAKES')
+    print('8 FOLD FOR HIGH STAKES WITH HIGH CARD')
+    bet = Player().betRequest(json.loads(test_case.read()))
+    if bet != 0:
+        sys.exit('bet is not 0 but {}'.format(bet))
+
+with open('test_case8.json') as test_case:
+    print('9 FOLD FOR HIGH STAKES WITH PAIR')
     bet = Player().betRequest(json.loads(test_case.read()))
     if bet != 0:
         sys.exit('bet is not 0 but {}'.format(bet))
