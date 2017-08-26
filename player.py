@@ -1,3 +1,4 @@
+import strategies
 
 class Player:
     VERSION = "Default Python folding player"
@@ -30,9 +31,6 @@ class Player:
         - pot
     """
 
-    def isPair():
-        return
-
     def betRequest(self, game_state):
         """
         return integer: amount of chips to be bet
@@ -45,7 +43,8 @@ class Player:
         community_cards = game_state['community_cards']
         bet = players[in_action]['bet']
         minimum_to_play = current_buy_in - bet
-        
+        if (strategies.isPair(our_cards, community_cards)):
+            return minimum_to_play
         return 0
 
     def showdown(self, game_state):
