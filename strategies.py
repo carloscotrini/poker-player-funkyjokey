@@ -27,7 +27,9 @@ def possessFlush(our_cards, community_cards):
     our_cards = [Card(c) for c in our_cards]
     community_cards = [Card(c) for c in community_cards]
 
-    if our_cards[0].suite == our_cards[1].suite:
+    if len(our_cards) < 2:
+        return False
+    elif our_cards[0].suite == our_cards[1].suite:
         comm_suites = [c.suite for c in community_cards]
         comm_suite_counts = {r : 0 for r in suites}
         for suite in comm_suites:
