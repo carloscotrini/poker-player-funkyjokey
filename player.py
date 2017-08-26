@@ -31,7 +31,7 @@ class Player:
     """
 
     def isPair():
-        return False
+        return
 
     def betRequest(self, game_state):
         """
