@@ -14,9 +14,12 @@ class Player:
         minimum_to_play = current_buy_in - bet
         minimum_raise = int(stack) / 2
         print(str(our_cards), str(community_cards))
-        if (strategies.possessPair(our_cards, community_cards)):
-            print("PICKED STRATEGY: isPair")
+        if strategies.possessPair(our_cards, community_cards):
+            print("PICKED STRATEGY: possessPair")
             return minimum_to_play + minimum_raise
+        if strategies.possessHighCard(our_cards, community_cards) and community_cards:
+            print("PICKED STRATEGY: possessHighCard")
+            return minimum_to_play
         print("NO STRATEGY, WE ARE CHECKING OR FOLDING")
         return 0
 
