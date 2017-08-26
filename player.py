@@ -51,7 +51,7 @@ class Player:
             #    to_bet = cap
             return to_bet
         if strategies.possessHighCard(our_cards, community_cards):
-            threshold = int(stack) / 10
+            threshold = int(stack) / 8
             if minimum_to_play >= threshold:
                 print("PICKED STRATEGY: foldForHighStakes HIGH CARD")
                 return 0
