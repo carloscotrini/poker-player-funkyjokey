@@ -40,12 +40,12 @@ class Player:
             minimum_raise = int(stack) / 4
             return minimum_to_play + minimum_raise
 
-        if pot >= 100:
+        if pot >= 300 and community_cards:
             return 0
 
         if strategies.possessHighPair(our_cards, community_cards):
             threshold = int(stack) / 6
-            if minimum_to_play >= threshold:
+            if minimum_to_play >= threshold and community_cards:
                 print("PICKED STRATEGY: foldForHighStakes PAIR")
                 return 0
             print("PICKED STRATEGY: possessHighPair")
@@ -53,7 +53,7 @@ class Player:
             return minimum_to_play + minimum_raise
         if strategies.possessPair(our_cards, community_cards):
             threshold = int(stack) / 8
-            if minimum_to_play >= threshold:
+            if minimum_to_play >= threshold and community_cards:
                 print("PICKED STRATEGY: foldForHighStakes PAIR")
                 return 0
             print("PICKED STRATEGY: possessPair")
