@@ -12,10 +12,14 @@ class Player:
         bet = players[in_action]['bet']
         stack = players[in_action]['stack']
         minimum_to_play = current_buy_in - bet
-        minimum_raise = int(stack) / 2
         print(str(our_cards), str(community_cards))
+        if strategies.possessFlush(our_cards, community_cards):
+            print("PICKED STRATEGY: possessFlush")
+            minimum_raise = int(stack) / 4 * 3
+            return minimum_to_play + minimum_raise
         if strategies.possessPair(our_cards, community_cards):
             print("PICKED STRATEGY: possessPair")
+            minimum_raise = int(stack) / 2
             return minimum_to_play + minimum_raise
         if strategies.possessHighCard(our_cards, community_cards) and community_cards:
             print("PICKED STRATEGY: possessHighCard")
