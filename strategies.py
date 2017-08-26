@@ -99,3 +99,23 @@ def isStraightFlush(cards):
 
 def possessStraightFlush(our_cards, community_cards):
     return isStraightFlush(our_cards + community_cards) and (not isStraightFlush(community_cards))
+
+def hasFullHouse(cards):
+    triple_rank = None
+    for rank in ranks:
+        rank_cards = list(filter(lambda c : c["rank"] == rank, cards))
+        if len(rank_cards) >= 3:
+            triple_rank = rank
+            break
+
+    if triple_rank:
+        for rank in ranks:
+            if rank != triple_rank:
+                rank_cards = list(filter(lambda c : c["rank"] == rank, cards))
+                if len(rank_cards) >= 2:
+                    return True
+
+    return False
+
+def possessFullHouse(our_cards, community_cards):
+    return hasFullHouse(our_cards + community_cards) and (not hasFullHouse(community_cards))

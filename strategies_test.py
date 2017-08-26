@@ -141,6 +141,28 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"rank": "6", "suit":"clubs"}, {"rank": "8", "suit":"clubs"}, {"rank": "4", "suit":"clubs"}]
         self.assertFalse(strategies.possessStraightFlush(our_cards, community_cards))
 
+    def test_possessFullHouse(self):
+        our_cards = [{"rank": "2", "suit":"hearts"}, {"rank": "3" , "suit":"hearts"}]
+        community_cards = [{"rank": "2", "suit":"hearts"}, {"rank": "3", "suit":"hearts"}, {"rank": "3", "suit":"spades"}]
+        self.assertTrue(strategies.possessFullHouse(our_cards, community_cards))
+
+        our_cards = [{"rank": "1", "suit": "hearts"}, {"rank": "3", "suit": "diamonds"}]
+        community_cards = [{"rank": "2", "suit": "clubs"}, {"rank": "3", "suit": "hearts"},
+                           {"rank": "3", "suit": "spades"}]
+        self.assertFalse(strategies.possessFullHouse(our_cards, community_cards))
+
+        our_cards = [{"rank": "2", "suit": "hearts"}, {"rank": "3", "suit": "diamonds"}]
+        community_cards = [{"rank": "2", "suit": "clubs"}, {"rank": "3", "suit": "hearts"},
+                           {"rank": "1", "suit": "spades"}]
+        self.assertFalse(strategies.possessFullHouse(our_cards, community_cards))
+
+        our_cards = [{"rank": "Q", "suit":"hearts"}, {"rank": "A" , "suit":"clubs"}]
+        community_cards = [{"rank": "Q", "suit":"hearts"}, {"rank": "K", "suit":"spades"}, {"rank": "A", "suit":"spades"}, {"rank": "Q", "suit":"diamonds"}]
+        self.assertTrue(strategies.possessFullHouse(our_cards, community_cards))
+
+        our_cards = [{"rank": "Q", "suit":"hearts"}, {"rank": "A" , "suit":"clubs"}]
+        community_cards = [{"rank": "K", "suit":"hearts"}, {"rank": "K", "suit":"spades"}, {"rank": "J", "suit":"spades"}, {"rank": "J", "suit":"diamonds"}, {"rank": "J", "suit":"spades"}, {"rank": "J", "suit":"spades"}]
+        self.assertFalse(strategies.possessFullHouse(our_cards, community_cards))
 
 if __name__ == "__main__":
     unittest.main()
