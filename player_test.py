@@ -15,10 +15,10 @@ with open('test_case2.json') as test_case:
         sys.exit('betting on nothing')
 
 with open('test_case3.json') as test_case:
-    print('3 RAISE HALF ON POSSESS PAIR')
+    print('3 RAISE ON POSSESS PAIR')
     bet = Player().betRequest(json.loads(test_case.read()))
-    if bet != 253:
-        sys.exit('bet is not 253 but {}'.format(bet))
+    if bet != 128:
+        sys.exit('bet is not 128 but {}'.format(bet))
 
 with open('test_case4.json') as test_case:
     print('4 FOLD IF NO PAIR')
