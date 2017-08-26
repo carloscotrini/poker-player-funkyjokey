@@ -44,6 +44,7 @@ class Player:
         bet = players[in_action]['bet']
         minimum_to_play = current_buy_in - bet
         if (strategies.isPair(our_cards, community_cards)):
+            print("we have a pair", str(our_cards), str(community_cards))
             return minimum_to_play
         return 0
 
