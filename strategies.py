@@ -55,10 +55,10 @@ def isPoker(cards):
     cards = [Card(c) for c in cards]
 
     map = get_rank_freq(cards)
+    print(cards)
+    print(map)
     return len(list(filter(lambda val : val >= 4, map.values()))) > 0
 
 def possessPoker(our_cards, community_cards):
     print("===============")
-    print(our_cards)
-    print(community_cards)
     return isPoker(our_cards + community_cards) and (not isPoker(community_cards))
