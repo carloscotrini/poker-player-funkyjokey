@@ -55,5 +55,27 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"rank": "A"}, {"rank": "A"}]
         self.assertFalse(strategies.possessHighCard(our_cards, community_cards))
 
+    def test_possessFlush(self):
+
+        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
+        community_cards = [{"suite": "clubs"}, {"suite": "clubs"}]
+        self.assertFalse(strategies.possessFlush(our_cards, community_cards))
+
+        our_cards = [{"suite": "hearts"}, {"suite": "hearts"}]
+        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        self.assertTrue(strategies.possessFlush(our_cards, community_cards))
+
+        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
+        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        self.assertFalse(strategies.possessFlush(our_cards, community_cards))
+
+        our_cards = [{"suite": "hearts"}, {"suite": "spades"}]
+        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        self.assertFalse(strategies.possessFlush(our_cards, community_cards))
+
+        our_cards = [{"suite": "hearts"}, {"suite": "hearts"}]
+        community_cards = [{"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}, {"suite": "hearts"}]
+        self.assertTrue(strategies.possessFlush(our_cards, community_cards))
+
 if __name__ == "__main__":
     unittest.main()
