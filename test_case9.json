@@ -33,7 +33,10 @@
     "small_blind":10,
     "orbits":0,
     "dealer":0,
-    "community_cards":[],
+    "community_cards":[{
+        "rank": "2",
+        "suit": "spades"
+    }],
     "current_buy_in":500,
     "pot":0
 }
