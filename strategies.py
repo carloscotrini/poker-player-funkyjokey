@@ -27,7 +27,21 @@ def possessPair(our_cards, community_cards):
 def possessHighCard(our_cards, community_cards):
     return {"J", "Q", "K", "A"} & set(map(lambda card : card["rank"], our_cards)) != set()
 
+def hasFlush(cards):
+    cards = [Card(c) for c in cards]
+    suites = [c.suite for c in cards]
+    comm_suite_counts = {r: 0 for r in suits}
+    for suite in suites:
+        comm_suite_counts[suite] += 1
+        if comm_suite_counts[suite] >= 5:
+            return True
+
+    return False
+
 def possessFlush(our_cards, community_cards):
+    return hasFlush(our_cards + community_cards) and (not hasFlush(community_cards))
+
+def old_possessFlush(our_cards, community_cards):
     our_cards = [Card(c) for c in our_cards]
     community_cards = [Card(c) for c in community_cards]
 
@@ -99,6 +113,9 @@ def isStraightFlush(cards):
 
 def possessStraightFlush(our_cards, community_cards):
     return isStraightFlush(our_cards + community_cards) and (not isStraightFlush(community_cards))
+
+def hasTriple():
+    pass
 
 def hasFullHouse(cards):
     triple_rank = None

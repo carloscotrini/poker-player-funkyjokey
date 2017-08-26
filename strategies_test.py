@@ -81,8 +81,12 @@ class StrategyTester(unittest.TestCase):
         community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
         self.assertFalse(strategies.possessFlush(our_cards, community_cards))
 
+        our_cards = [{"suit": "hearts"}, {"suit": "spades"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "clubs"}]
+        self.assertTrue(strategies.possessFlush(our_cards, community_cards))
+
         our_cards = [{"suit": "hearts"}, {"suit": "hearts"}]
-        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}]
+        community_cards = [{"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "hearts"}, {"suit": "diamonds"}]
         self.assertTrue(strategies.possessFlush(our_cards, community_cards))
 
     def test_possessPoker(self):
