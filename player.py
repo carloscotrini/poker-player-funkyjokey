@@ -6,7 +6,6 @@ class Player:
     VERSION = "Default Python folding player"
 
     def betRequest(self, game_state):
-        return 0
         players = game_state['players']
         current_buy_in = game_state['current_buy_in']
         in_action = game_state['in_action']
