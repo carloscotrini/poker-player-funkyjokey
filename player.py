@@ -15,6 +15,9 @@ class Player:
         stack = players[in_action]['stack']
         minimum_to_play = current_buy_in - bet
         print(str(our_cards), str(community_cards))
+        if strategies.possessStraightFlush(our_cards, community_cards):
+            print("PICKED STRATEGY: possessStraightFlush")
+            return stack
         if strategies.possessPoker(our_cards, community_cards):
             print("PICKED STRATEGY: possessPoker")
             minimum_raise = int(stack) / 4 * 3
